@@ -27,6 +27,7 @@ class Widgetbook extends StatefulWidget {
     this.integrations,
     this.theme,
     this.darkTheme,
+    this.themeMode,
   });
 
   /// A [Widgetbook] with [CupertinoApp] as an [appBuilder].
@@ -39,6 +40,7 @@ class Widgetbook extends StatefulWidget {
     this.integrations,
     this.theme,
     this.darkTheme,
+    this.themeMode,
   });
 
   /// A [Widgetbook] with [MaterialApp] as an [appBuilder].
@@ -51,6 +53,7 @@ class Widgetbook extends StatefulWidget {
     this.integrations,
     this.theme,
     this.darkTheme,
+    this.themeMode,
   });
 
   /// The initial route for that will be used on first startup.
@@ -80,6 +83,8 @@ class Widgetbook extends StatefulWidget {
   final ThemeData? theme;
 
   final ThemeData? darkTheme;
+
+  final ThemeMode? themeMode;
 
   @override
   State<Widgetbook> createState() => _WidgetbookState();
@@ -120,7 +125,7 @@ class _WidgetbookState extends State<Widgetbook> {
         title: 'Widgetbook',
         theme: widget.theme ?? Themes.light,
         darkTheme: widget.darkTheme ?? Themes.dark,
-        themeMode: ThemeMode.dark,
+        themeMode: widget.themeMode ?? ThemeMode.system,
         routerConfig: router,
         debugShowCheckedModeBanner: false,
       ),
