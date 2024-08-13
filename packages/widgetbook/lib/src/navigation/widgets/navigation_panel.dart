@@ -32,17 +32,14 @@ class _NavigationPanelState extends State<NavigationPanel> {
   @override
   void initState() {
     super.initState();
-    selectedNode = widget.initialPath != null
-        ? widget.root.find((child) => child.path == widget.initialPath)
-        : null;
+    selectedNode = widget.initialPath != null ? widget.root.find((child) => child.path == widget.initialPath) : null;
   }
 
   @override
   Widget build(BuildContext context) {
     final query = WidgetbookState.of(context).query ?? '';
-    final filteredRoot = query.isEmpty
-        ? widget.root
-        : widget.root.filter((node) => filterNode(node, query)) ?? widget.root;
+    final filteredRoot =
+        query.isEmpty ? widget.root : widget.root.filter((node) => filterNode(node, query)) ?? widget.root;
 
     return Column(
       children: [

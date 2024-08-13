@@ -14,46 +14,46 @@ class Workbench extends StatelessWidget {
     final state = WidgetbookState.of(context);
 
     return Scaffold(
-      // Some addons require a Scaffold to work properly.
       body: SafeBoundaries(
         child: state.appBuilder(
           context,
-          ColoredBox(
-            // Background color for the area behind device frame if
-            // the [DeviceFrameAddon] is used.
-            color: Theme.of(context).scaffoldBackgroundColor,
-            child: MultiAddonBuilder(
-              addons: state.addons,
-              builder: (context, addon, child) {
-                final state = WidgetbookState.of(context);
-                final groupMap = FieldCodec.decodeQueryGroup(
-                  state.queryParams[addon.groupName],
-                );
+          MultiAddonBuilder(
+            addons: state.addons,
+            builder: (context, addon, child) {
+              final state = WidgetbookState.of(context);
+              final groupMap = FieldCodec.decodeQueryGroup(
+                state.queryParams[addon.groupName],
+              );
 
-                final newSetting = addon.valueFromQueryGroup(groupMap);
+              final newSetting = addon.valueFromQueryGroup(groupMap);
 
-                return addon.buildUseCase(
-                  context,
-                  child,
-                  newSetting,
-                );
-              },
-              child: Stack(
-                // The Stack is used to loosen the constraints of
-                // the UseCaseBuilder. Without the Stack, UseCaseBuilder
-                // would expand to the whole size of the Workbench.
-                children: [
-                  UseCaseBuilder(
+              return addon.buildUseCase(
+                context,
+                child,
+                newSetting,
+              );
+            },
+            child: Stack(
+              // The Stack is used to loosen the constraints of
+              // the UseCaseBuilder. Without the Stack, UseCaseBuilder
+              // would expand to the whole size of the Workbench.
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: ColoredBox(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                  ),
+                ),
+                Center(
+                  child: UseCaseBuilder(
                     key: ValueKey(state.uri),
                     builder: (context) {
-                      return WidgetbookState.of(context)
-                              .useCase
-                              ?.build(context) ??
-                          const SizedBox.shrink();
+                      return WidgetbookState.of(context).useCase?.build(context) ?? const SizedBox.shrink();
                     },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

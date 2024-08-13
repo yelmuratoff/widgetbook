@@ -571,26 +571,23 @@ packages:
   widgetbook:
     dependency: "direct main"
     description:
-      name: widgetbook
-      sha256: de5b9887f9ad663bdcc1f957bc22aa0eb4dd7b406ac0142158bf35c0fad4a4f2
-      url: "https://pub.dev"
-    source: hosted
+      path: "../../packages/widgetbook"
+      relative: true
+    source: path
     version: "3.8.1"
   widgetbook_annotation:
     dependency: "direct main"
     description:
-      name: widgetbook_annotation
-      sha256: c2d881d0241525b36aa3777d0ac406d198528ed28b84ca73b7dd9f59189d6bb0
-      url: "https://pub.dev"
-    source: hosted
+      path: "../../packages/widgetbook_annotation"
+      relative: true
+    source: path
     version: "3.1.0"
   widgetbook_generator:
     dependency: "direct dev"
     description:
-      name: widgetbook_generator
-      sha256: "7a5baf68bb76cbd8aeb093050172f99bb83b44360bf2a72c2b19b3785e3d29d0"
-      url: "https://pub.dev"
-    source: hosted
+      path: "../../packages/widgetbook_generator"
+      relative: true
+    source: path
     version: "3.8.0"
   yaml:
     dependency: transitive
@@ -602,4 +599,4 @@ packages:
     version: "3.1.2"
 sdks:
   dart: ">=3.4.0 <4.0.0"
-  flutter: ">=3.22.0"
+  flutter: ">=3.18.0-18.0.pre.54"

@@ -25,8 +25,9 @@ class MobileLayout extends StatelessWidget implements BaseLayout {
     final state = WidgetbookState.of(context);
 
     return Scaffold(
-      key: ValueKey(state.isNext), // Rebuild when switching to next
+      key: ValueKey(state.isNext),
       body: SafeArea(
+        top: false,
         child: workbench,
       ),
       bottomNavigationBar: ExcludeSemantics(

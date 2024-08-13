@@ -25,6 +25,8 @@ class Widgetbook extends StatefulWidget {
     this.appBuilder = widgetsAppBuilder,
     this.addons,
     this.integrations,
+    this.theme,
+    this.darkTheme,
   });
 
   /// A [Widgetbook] with [CupertinoApp] as an [appBuilder].
@@ -35,6 +37,8 @@ class Widgetbook extends StatefulWidget {
     this.appBuilder = cupertinoAppBuilder,
     this.addons,
     this.integrations,
+    this.theme,
+    this.darkTheme,
   });
 
   /// A [Widgetbook] with [MaterialApp] as an [appBuilder].
@@ -45,6 +49,8 @@ class Widgetbook extends StatefulWidget {
     this.appBuilder = materialAppBuilder,
     this.addons,
     this.integrations,
+    this.theme,
+    this.darkTheme,
   });
 
   /// The initial route for that will be used on first startup.
@@ -71,6 +77,10 @@ class Widgetbook extends StatefulWidget {
   /// can also be used to integrate with third-party packages.
   final List<WidgetbookIntegration>? integrations;
 
+  final ThemeData? theme;
+
+  final ThemeData? darkTheme;
+
   @override
   State<Widgetbook> createState() => _WidgetbookState();
 }
@@ -93,9 +103,7 @@ class _WidgetbookState extends State<Widgetbook> {
     );
 
     router = AppRouter(
-      initialRoute: Uri.base.fragment.isNotEmpty
-          ? Uri.base.fragment
-          : widget.initialRoute,
+      initialRoute: Uri.base.fragment.isNotEmpty ? Uri.base.fragment : widget.initialRoute,
       state: state,
     );
 
@@ -110,8 +118,9 @@ class _WidgetbookState extends State<Widgetbook> {
       state: state,
       child: MaterialApp.router(
         title: 'Widgetbook',
-        theme: Themes.light,
-        darkTheme: Themes.dark,
+        theme: widget.theme ?? Themes.light,
+        darkTheme: widget.darkTheme ?? Themes.dark,
+        themeMode: ThemeMode.dark,
         routerConfig: router,
         debugShowCheckedModeBanner: false,
       ),

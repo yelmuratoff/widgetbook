@@ -6,9 +6,10 @@ repository: https://github.com/widgetbook/widgetbook/tree/main/packages/widgetbo
 issue_tracker: https://github.com/widgetbook/widgetbook/issues
 documentation: https://docs.widgetbook.io
 topics: [widgetbook, storybook, ui, codegen, build-runner]
+publish_to: none
 
 screenshots:
-  - description: 'Widgetbook Logo'
+  - description: "Widgetbook Logo"
     path: assets/logo.png
 
 environment:
@@ -25,8 +26,10 @@ dependencies:
   meta: ^1.7.0
   path: ^1.8.0
   source_gen: ^1.1.0
-  widgetbook: ^3.7.0
-  widgetbook_annotation: ^3.1.0
+  widgetbook:
+    path: ../widgetbook
+  widgetbook_annotation:
+    path: ../widgetbook_annotation
   yaml: ^3.1.1
 
 dev_dependencies:
